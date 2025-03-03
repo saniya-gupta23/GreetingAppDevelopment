@@ -12,6 +12,13 @@ public class GreetingController {
     @Autowired
     private GreetingService greetingService;
 
+    @GetMapping
+    public String getGreetings(
+            @RequestParam(value = "firstName", required = false) String firstName,
+            @RequestParam(value = "lastName", required = false) String lastName) {
+        return greetingService.getGreeting(firstName, lastName);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteGreeting(@PathVariable Long id) {
         try {
