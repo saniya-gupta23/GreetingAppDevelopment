@@ -12,6 +12,10 @@ public class GreetingService {
     @Autowired
     private GreetingRepository greetingRepository;
 
+    public String getGreeting() {
+        return "Hello World";
+    }
+
     public void deleteGreeting(Long id) {
         Optional<Greeting> greeting = greetingRepository.findById(id);
         if(greeting.isPresent()) {

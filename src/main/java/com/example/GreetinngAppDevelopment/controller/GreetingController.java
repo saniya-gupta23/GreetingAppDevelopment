@@ -12,6 +12,16 @@ public class GreetingController {
     @Autowired
     private GreetingService greetingService;
 
+    // Constructor-based Dependency Injection
+    public GreetingController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
+    @GetMapping
+    public String getGreetings() {
+        return greetingService.getGreeting();
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteGreeting(@PathVariable Long id) {
         try {
