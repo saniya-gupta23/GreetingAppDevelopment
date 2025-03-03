@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "greetings")
 @Data
-@NoArgsConstructor
+//@NoArgsConstructor
 @AllArgsConstructor
 public class Greeting {
     @Id
@@ -16,4 +16,23 @@ public class Greeting {
     private Long id;
 
     private String message;
+
+    public Greeting() {
+    }
+
+    public Greeting(String message) {
+        this.message = message;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

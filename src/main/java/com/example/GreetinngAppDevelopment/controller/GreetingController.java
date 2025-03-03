@@ -10,7 +10,18 @@ import org.springframework.web.bind.annotation.*;
 public class GreetingController {
 
     @Autowired
-    private GreetingService greetingService;
+    private final GreetingService greetingService;
+
+    public GreetingController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
+    @PostMapping
+    public String saveGreeting(
+            @RequestParam(value = "firstName", required = false) String firstName,
+            @RequestParam(value = "lastName", required = false) String lastName) {
+        return greetingService.getGreeting(firstName, lastName);
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteGreeting(@PathVariable Long id) {
